@@ -1,9 +1,10 @@
 "use strict";
 
 const { Router } = require('express');
-const sessionsController = require('../controllers/sessions.js');
+const { SessionsController } = require('../controllers/sessionsController.js');
 
 const sessionsRoute = Router();
+const sessionsController = new SessionsController();
 
 sessionsRoute.get('/', sessionsController.getAllSessions);
 

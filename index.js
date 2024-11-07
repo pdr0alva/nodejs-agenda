@@ -11,9 +11,9 @@ APP.use(express.json());
 APP.use(cors());
 
 /* routes */
-const SessionsRoute = require('./routes/sessions.js');
-const ClientsRoute = require('./routes/clients.js');
-const ProfessionalsRoute = require('./routes/professionals.js');
+const SessionsRoute = require('./routes/sessionsRoute.js');
+const ClientsRoute = require('./routes/clientsRoute.js');
+const ProfessionalsRoute = require('./routes/professionalsRoute.js');
 const UsersRoute = require('./routes/usersRoute.js')
 
 APP.use("/data/sessions", SessionsRoute);
@@ -27,7 +27,6 @@ APP.get('/', (req, res) =>
 {
     res.status(200).sendFile(path.join(__dirname, 'public', 'index.html'));
 })
-
 
 APP.listen(PORT, () => 
 { 

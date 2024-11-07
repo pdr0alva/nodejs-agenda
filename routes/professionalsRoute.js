@@ -1,9 +1,10 @@
 "use strict";
 
 const { Router } = require('express');
-const professionalsController = require('../controllers/professionals.js');
+const { ProfessionalsController } = require('../controllers/professionalsController.js');
 
 const professionalsRoute = Router();
+const professionalsController = new ProfessionalsController();
 
 professionalsRoute.get('/', professionalsController.getAllProfessionals);
 professionalsRoute.get('/search', professionalsController.searchController);

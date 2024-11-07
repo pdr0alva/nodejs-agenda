@@ -1,94 +1,67 @@
+"use strict"
+
 const db = require('./db-conn.js')
 const bcrypt = require('bcrypt');
 
 class UsersModel
 {
-    construtor () {}
-
-    async #UsernameExists(username)
+    constructor (username, password, email) 
     {
-        const sql = `
-            SELECT EXISTS(
-                SELECT NULL
-                FROM Users
-                WHERE username = ?
-            ) AS exist;
-        `; 
-
-        try 
-        {
-            const [ result ] = await db.execute(sql, [ username ]);
-            return result[0].exist ? true : false;
-        }
-        catch (e)
-        {
-            console.log(`ERROR ON #UsernameExists ${e}`);
-            throw e;
-        }
+        this.username = username;
+        this.password = password;
+        this.email = email;
     }
 
-    async #EmailExists(email)
-    {
-            const sql = `
-            SELECT EXISTS(
-                SELECT NULL
-                FROM Users
-                WHERE email = ?
-            ) AS exist;
-        `; 
-
-        try 
-        {
-            const [ result ] = await db.execute(sql, [ email ]);
-            return result[0].exist ? true : false;
-        }
-        catch (e)
-        {
-            console.log(`ERROR ON #EmailExists: ${e}`);
-            throw e;
-        }
-    }
-
-    async #hash_password(password)
+    async hashPassword()
     {
         const salt_rounds = 10;
-        const hashed = await bcrypt.hash(password, salt_rounds);
-        return hashed;        
+        return await bcrypt.hash(this.password, salt_rounds);
+    }
+}
+
+class UsersRepository
+{   
+    constructor () {}
+
+    async validateUser (username, email)
+    {
+        const SQL = `
+            SELECT 
+                CASE
+                    WHEN EXISTS(SELECT 0 FROM Users WHERE username = ?) THEN 'username'
+                    WHEN EXISTS(SELECT 0 FROM Users WHERE email = ?) THEN 'email'
+                    ELSE 'success'
+                END AS conflict;
+        `;
+
+        try
+        {
+            const [ result ] = await db.execute(SQL, [ username, email ]);
+            return result[0].conflict;
+        }
+        catch (e)
+        {
+            console.log(`error on validateUser: ${e}`);
+        };
     }
 
-    async register( user_obj )
+    async insertUser (User)
     {
-        const sql = `
-            INSERT INTO Users(username, password_hash, email) VALUES(?, ?, ?);
-        `
-
-        if(await this.#UsernameExists(user_obj.username))
-        {
-            throw new Error("User already exists");
-        }
-
-        if(await this.#EmailExists(user_obj.email))
-        {
-            throw new Error("Email already registered");
-        }
-
-        const hashed_password = await this.#hash_password(user_obj.password);
-
-        console.log(hashed_password);
+        const SQL = `INSERT INTO Users(username, password_hash, email) VALUES(?, ?, ?)`;
 
         try 
         {
-            const [ result ] = await db.execute(sql, [ user_obj.username, hashed_password, user_obj.email ]);
-            
-            console.log(result);
-            
+            console.log(`\n\n${User.username}, ${await User.hashPassword()}, ${User.email}\n\n`);
+
+            db.execute(SQL, [ User.username, await User.hashPassword(), User.email ]);
             return "success";
         }
         catch (e)
         {
-            console.log(`[MYSQL.ERROR ${e}]`);    
+            console.log(`[MYSQL.ERROR: ${e}]`);
+            throw e;
         };
-    } 
+    }   
 }
 
-module.exports = { UsersModel };
+module.exports = { UsersModel, UsersRepository };

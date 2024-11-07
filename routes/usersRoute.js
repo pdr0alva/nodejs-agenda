@@ -9,5 +9,4 @@ const usersRoute = Router();
 
 usersRoute.post('/', usersController.register);
 
-
 module.exports = usersRoute;
