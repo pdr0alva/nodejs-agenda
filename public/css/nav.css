@@ -1,0 +1,27 @@
+nav
+{
+    display: flex;
+    gap: 20px;
+
+    width: fit-content !important;
+    font-family: var(--title-font);
+
+    /**/
+    margin: 0 auto 1rem auto;
+    font-size: 1.1rem;    
+}
+
+nav > a 
+{
+    color: var(--color-pink);
+
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+nav > a:hover
+{
+    border: 1px solid var(--color-pink);
+}

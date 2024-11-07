@@ -1,0 +1,11 @@
+.page-title
+{
+    width: fit-content !important;
+    margin: auto;    
+    font-family: var(--title-font);
+
+    /**/
+    font-size: 2.5rem;
+    margin: 1rem auto 2rem auto;
+}
+
