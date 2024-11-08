@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salão - Clientes</title>
+
+    <link rel="stylesheet" href="/css/pages/new-client.css">
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+    <h1 class="page-title">Clientes</h1>
+
+    <nav>
+        <a href="/">Agenda Principal</a>
+        <a href="/clientes/">Clientes</a>
+        <a href="/profissionais/">Profissionais</a>
+    </nav>
+
+    <form id="client-form-register">
+        <div id="client-form-fieldset-container">
+            <fieldset id="client-fieldset-personal">
+                <legend>Informações Pessoais</legend>
+    
+                <label for="client-name">Nome</label>
+                <input type="text" id="client-name" name="client-name" required maxlength="50">
+        
+                <label for="client-cpf">CPF</label>
+                <input type="text" id="client-cpf" name="client-cpf required maxlength="11">
+                
+                <label for="client-cpf">Data de Nascimento</label>
+                <input type="text" id="client-birthday" name="client-birthday" required maxlength="10">
+
+                <label for="client-phone">Celular/Whastapp</label>
+                <input type="number" id="client-phone" name="client-phone" required maxlength="13">
+        
+                <label for="client-indicatedby">Nos conheceu como?</label>
+                <input type="text" id="client-indicatedby" name="client-indicatedby" required maxlength="255">
+            
+            </fieldset>
+            <fieldset id="client-fieldset-address"">
+                <legend>Endereço</legend>
+    
+                <label for="client-address__number">Número</label>
+                <input type="number" id="client-address__number" name="client-address__number" required maxlength="10">
+                
+                <label for="client-address__district">Bairro</label>
+                <input type="text" id="client-address__district" name="client-address__district" required maxlength="25">
+        
+                <label for="client-address_city">Cidade</label>
+                <input type="text" id="client-address__city" name="client-address_city" required maxlength="30">
+
+                <label for="client-address_street">Rua</label>
+                <input type="text" id="client-address_street" name="client-address_street" required maxlength="30">
+            </fieldset>       
+        </div>
+
+        <button id="client-submit-button" type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>

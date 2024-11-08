@@ -1,0 +1,30 @@
+th {
+    padding: 6px 10px; 
+    text-align: center;
+    font-weight: bold;
+}
+
+td {
+    padding: 5px 10px; 
+    text-align: center;
+}
+
+tr:first-child {
+    background-color: var(--color-pink);
+    color: white;
+}
+
+.table-style {
+    margin: auto;
+
+    border: 2px solid var(--color-pink) !important;
+    border-radius: 5px;
+    /* border-spacing: 0; */
+
+    border-collapse: separate;
+
+    font-family: var(--text-font);
+    margin-top: 4rem !important;
+
+    overflow: hidden;
+}

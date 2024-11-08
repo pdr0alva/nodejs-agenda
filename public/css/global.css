@@ -1,0 +1,13 @@
+@import '/css/root.css';
+@import '/css/components/nav.css';
+
+.page-title
+{
+    width: fit-content !important;
+    margin: 3rem auto;
+
+    font-family: var(--title-font);
+    font-size: 2.5rem;
+    font-weight: 500;
+    color:var(--color-pink);
+}

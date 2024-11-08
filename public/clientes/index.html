@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salão - Clientes</title>
 
-    <link rel="stylesheet" href="/css/clients.css"/>
+    <link rel="stylesheet" href="/css/pages/clients.css"/>
+    <link rel="stylesheet" href="/css/global.css"/>
+    <link rel="stylesheet" href="/css/components/table-style.css    "/>
 </head>
 <body>
     <h1 class="page-title">Clientes</h1>
 
     <nav>
         <a href="/">Agenda Principal</a>
-        <a href="/clientes/">Tabela de Clientes</a>
-        <a href="/profissionais/">Tabela de Profissionais</a>
+        <a href="/clientes/">Clientes</a>
+        <a href="/profissionais/">Profissionais</a>
     </nav>
 
     <table id="clients-table" class="table-style">
@@ -26,6 +28,11 @@
             <th>Data de Nascimento</th>
         </tr>
     </table>
+
+    <div id="control-buttons">
+        <a href="/clientes/novo">Adicionar Cliente</a>
+        <a href="">Remover Cliente</a>
+    </div>
 
     <script src="/scripts/clients.js" type="module" ></script>
 </body>

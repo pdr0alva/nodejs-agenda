@@ -1,0 +1,82 @@
+form 
+{
+    display: flex;
+    flex-direction: column;
+
+
+
+    /* media */
+    margin-top: 4rem !important; 
+    
+    gap: 40px;
+    width: 100%;
+    align-items: center;
+}
+
+#client-form-register > div > fieldset
+{
+    display: flex;
+    flex-direction: column;
+
+    width: fit-content;
+
+    /* media */
+    padding: 25px 50px;
+
+}
+
+fieldset > label
+{
+    font-family: var(--text-font);
+    font-size: 1.3rem;
+}
+
+fieldset > input
+{
+    font-size: 1.1rem;
+    border-radius: 3px;
+    border-color: var(--color-pink);
+
+    margin: .5rem 0 1.5rem 0;
+    padding: 5px 10px;
+}
+ 
+#client-form-fieldset-container 
+{
+    display: flex;
+    gap: 20px;
+}
+
+#client-form-fieldset-container > fieldset > legend 
+{
+    font-family: var(--text-font);
+    font-size: 1.5rem;
+}
+
+
+#client-submit-button
+{
+    border: transparent;
+
+    color: var(--color-pink);
+    background-color: white;
+    
+    font-weight: bold;
+    border: 1px solid var(--color-pink);;
+    border-radius: 4px;
+    
+    /* @media */
+    width: fit-content;    
+    padding: 15px 40px;
+    font-size: 1.5rem;
+
+    transition: .2s;
+}
+
+#client-submit-button:hover
+{
+    cursor: pointer;
+    background-color: var(--color-pink);
+    color: white;
+}
+
